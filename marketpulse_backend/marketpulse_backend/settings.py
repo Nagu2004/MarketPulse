@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'bot',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -75,11 +79,19 @@ WSGI_APPLICATION = 'marketpulse_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD
         'NAME': "marketpulse",
         'HOST':"localhost",
         "PORT":3306,
         "PASSWORD":"Ap39kb@2466",
         "USER":"root"
+=======
+        'NAME': 'marketpulse_setsseedas',
+        'PASSWORD':'Vijay@123',
+        'USER':"marketpulse_setsseedas",  
+        'HOST':'k1j1s8.h.filess.io',
+        'PORT':'3307',
+>>>>>>> c9a05e35c9b64b09fce829071ccc38cd2f915d26
     }
 }
 
@@ -124,3 +136,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+##cors-->
+
+CORS_ALLOW_ALL_ORIGINS = True
