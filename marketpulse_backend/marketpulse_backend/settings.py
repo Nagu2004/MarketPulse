@@ -75,7 +75,11 @@ WSGI_APPLICATION = 'marketpulse_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "",
+        'NAME':"marketpulse",
+        'HOST':'localhost',
+        'PORT':3306,
+        "PASSWORD":"Vijay@123",
+        'USER':'root'
     }
 }
 
