@@ -76,21 +76,12 @@ WSGI_APPLICATION = 'marketpulse_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
-        'NAME':"marketpulse",
-        'HOST':'localhost',
-        'PORT':3306,
-        "PASSWORD":"Vijay@123",
-        'USER':'root'
-        }
-=======
         'NAME': 'marketpulse_setsseedas',
         'PASSWORD':'Vijay@123',
         'USER':"marketpulse_setsseedas",  
         'HOST':'k1j1s8.h.filess.io',
         'PORT':'3307',
     }
->>>>>>> 76c73137aafe853241d94dc30c261f9c58d4a275
 }
 
 
