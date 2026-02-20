@@ -6,11 +6,15 @@ import pyjokes
 import requests
 import json
 import os
+import re
+from sambanova import SambaNova
 
 WEATHER_API_KEY = "e5a477fe377156d570abf3d52d33a0ea"
-GEMINI_API_KEY = "AIzaSyAIoB9D9fGxNkYtf0dCusF_TPN11mBLSJI"  
+api_key="d87cce1e-2444-44b6-bd99-d6718fefcb8b", 
 
 base_url = "http://api.openweathermap.org/data/2.5/weather"
+
+
 
 
 @csrf_exempt
@@ -30,12 +34,32 @@ def chatbotdata(request):
        
 
         def chatbot(user_input):
-            client = genai.Client(api_key="AIzaSyAIoB9D9fGxNkYtf0dCusF_TPN11mBLSJI")
+            try:
+                print("Trying to connect to Samba...")
 
-            response = client.models.generate_content(
-                model="gemini-3-flash-preview", contents=user_input
-            )
-            return (response.text)
+                client = SambaNova(
+                    api_key="d87cce1e-2444-44b6-bd99-d6718fefcb8b", 
+                    base_url="https://api.sambanova.ai/v1",
+                )
+
+                response = client.chat.completions.create(
+                    model="DeepSeek-R1-0528",
+                    messages=[
+                        {"role": "user", "content": user_input}
+                    ]
+                )
+
+                print("Success response received")
+                reply = response.choices[0].message.content
+                # Remove <think>...</think> block completely
+                reply = re.sub(r"<think>.*?</think>", "", reply, flags=re.DOTALL)
+
+                reply = reply.strip()
+
+                return reply
+            except Exception as e:
+                print("FULL ERROR:", repr(e))
+                return "Connection failed."
 
         def cur_time():
             time = datetime.datetime.now().strftime("%I:%M %p")
