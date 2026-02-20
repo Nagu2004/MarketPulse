@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import axios from "axios"
+import "../style/chat.css"
 
 function Chatbot() {
 
@@ -39,47 +40,36 @@ function Chatbot() {
         }
     }
 
-    return (
-        <div style={{ width: "400px", margin: "auto" }}>
+   return (
+    <div className="chat-container">
 
-           
-
-            <div style={{
-                border: "1px solid gray",
-                padding: "10px",
-                height: "300px",
-                overflowY: "scroll"
-            }}>
-                {
-                    data.map((e, index) => (
-                        <div key={index}>
-                            {
-                                e.sender === "user" ?
-                                    <p style={{ textAlign: "right", color: "blue" }}>
-                                        {e.data}
-                                    </p>
-                                    :
-                                    <p style={{ textAlign: "left", color: "green" }}>
-                                        {e.data}
-                                    </p>
-                            }
-                        </div>
-                    ))
-                }
-            </div>
-
-            <div style={{ marginTop: "10px" }}>
-                <input
-                    type="text"
-                    ref={inputRef}
-                    placeholder="Type message..."
-                    style={{ width: "75%" }}
-                />
-                <button onClick={senddata}>Send</button>
-            </div>
-
+        <div className="chat-messages">
+            {data.map((e, index) => (
+                <div
+                    key={index}
+                    className={`message-row ${e.sender === "user" ? "user" : "robot"}`}
+                >
+                    <div className="message-bubble">
+                        {e.data}
+                    </div>
+                </div>
+            ))}
         </div>
-    )
+
+        <div className="chat-input-area">
+            <input
+                type="text"
+                ref={inputRef}
+                placeholder="Type message..."
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") senddata()
+                }}
+            />
+            <button onClick={senddata}>Send</button>
+        </div>
+
+    </div>
+)
 }
 
 export default Chatbot
