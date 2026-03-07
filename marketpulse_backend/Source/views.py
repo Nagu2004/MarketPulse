@@ -15,11 +15,10 @@ class source(APIView):
             return Response(
                 {"error": "No data available for this stock"},
                 status=400
-            )
+    )
         dataframe = analyse(dataframe)
         signal, confidence, target, stop_loss = Predict(dataframe)
         price = round(dataframe.iloc[-1].Close,2)
-
         StockDecision.objects.create(
             name=stock,
             price=price,
