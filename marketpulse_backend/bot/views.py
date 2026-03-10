@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from google import genai
+import google.generativeai as genai
 import datetime
 import pyjokes
 import requests
