@@ -12,14 +12,10 @@ function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Home/>
-=======
       <BrowserRouter>
       <Footer/>
 
       </BrowserRouter>
->>>>>>> e61944b6a3def9a38eba2b1aa96165c10ac41643
     </div>
   )
 }
