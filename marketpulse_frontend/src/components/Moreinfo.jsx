@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-// import "../css/info.css";
+//import "../css/info.css";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,9 @@ function Moreinfo(){
     useEffect(()=>{
         console.log(data)
     },[data])
+    let getdata=()=>{
+        navigate("/history/")
+    }
     let home=()=>{
         navigate("/home/")
     }
@@ -24,7 +27,7 @@ function Moreinfo(){
             <p>PRICE<span>{data.PRICE}</span></p>
             <p>DECISON<span>{data.DECISON}</span></p>
             <div className="btn">
-            <button >PREVIOUS HISTORY</button>
+            <button onClick={getdata} >PREVIOUS HISTORY</button>
             <button onClick={back}>BACK</button>
             <button onClick={home}>HOME</button>
             </div>
