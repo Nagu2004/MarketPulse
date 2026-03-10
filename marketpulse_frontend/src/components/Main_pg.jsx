@@ -2,7 +2,7 @@
 import Home from "./Home";
 import { Route, Routes } from 'react-router-dom';
 
-function Main_p(){
+function Main_pg(){
     return(
         <div className="main">
             <Routes>
@@ -11,4 +11,4 @@ function Main_p(){
         </div>
     );
 }
-export default Main_p;
+export default Main_pg;

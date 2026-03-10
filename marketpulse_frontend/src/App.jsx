@@ -1,25 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Footer from './components/Footer'
 import { BrowserRouter } from 'react-router-dom'
 import Chatbot from './components/Chatbot'
+import Home from "./components/Home.jsx";
+import Header from "./components/Header.jsx";
+import Main_pg from './components/Main_pg';
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
-<<<<<<< HEAD
-      <Home/>
-=======
       <BrowserRouter>
+      <Header/>
+      <Main_pg/>
       <Footer/>
-
       </BrowserRouter>
->>>>>>> e61944b6a3def9a38eba2b1aa96165c10ac41643
     </div>
   )
 }
