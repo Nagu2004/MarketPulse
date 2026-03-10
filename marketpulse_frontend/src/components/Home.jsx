@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function Home() {
+  let nav=useNavigate();
+  let movedata =()=>{
+    nav("/fetch/")
+  }
+
+
   return (
     <div className="home">
       <section className="hero">
@@ -7,7 +15,7 @@ function Home() {
           <p>"Money is a terrible master but an excellent servant"</p>
 
           <div className="hero-buttons">
-            <button className="primary-btn" >Analyze Stock</button>
+            <button className="primary-btn" onClick={movedata}>Analyze Stock</button>
             
           </div>
         </div>
