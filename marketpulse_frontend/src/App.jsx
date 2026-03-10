@@ -11,15 +11,16 @@ import Main_pg from './components/Main_pg';
 
 function App() {
   const [count, setCount] = useState(0)
+  
 
   return (
     <div>
       <BrowserRouter>
       <Header/>
+
 <<<<<<< HEAD
 =======
       <Main_pg/>
->>>>>>> 77eb6c08f0dc4384fff86648de733beea421c94d
       <Footer/>
       </BrowserRouter>
     </div>
