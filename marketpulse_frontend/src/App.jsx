@@ -4,25 +4,23 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import Main_p from './components/Main_pg'
 import { BrowserRouter } from 'react-router-dom'
 import Chatbot from './components/Chatbot'
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <div>
-<<<<<<< HEAD
-      <Home/>
-=======
       <BrowserRouter>
       <Header/>
+      <Main_p/>
       <Footer/>
 
       </BrowserRouter>
->>>>>>> e61944b6a3def9a38eba2b1aa96165c10ac41643
     </div>
   )
 }
