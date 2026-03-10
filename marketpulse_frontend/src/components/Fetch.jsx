@@ -9,13 +9,13 @@ function Fetch(){
     let dataref = useRef();
     let[history,setHistory] = useState([]);
      useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/history/").then((resp) => {
+        axios.get("http://127.0.0.1:8000/stock/history/").then((resp) => {
                 let last = resp.data.slice(-5).reverse();
                 setHistory(last);
             })
     }, []);
     let getdata=()=>{
-    let url1 = "http://127.0.0.1:8000/api/stock/"+dataref.current.value+"/";
+    let url1 = "http://127.0.0.1:8000/stock/stock/"+dataref.current.value+"/";
     axios.get(url1).then((resp)=>{
         console.log(resp.data);
         navigate("/info/",{state:resp.data})
