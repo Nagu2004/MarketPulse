@@ -3,7 +3,7 @@
 function Footer(){
     return(
         <div className="footer">
-            <h3>&copy; ALL RIGHTS BELONGS TO VARDHAN JAKKA</h3>
+            <h3>&copy; ALL RIGHTS BELONGS TO OUR TEAM </h3>
         </div>
     );
 }
