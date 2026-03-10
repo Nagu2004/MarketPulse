@@ -1,9 +1,7 @@
 
-import './App.css'
+//import './App.css'
 import Footer from './components/Footer'
 import { BrowserRouter } from 'react-router-dom'
-import Chatbot from './components/Chatbot'
-import Home from "./components/Home.jsx";
 import Header from "./components/Header.jsx";
 import Main_pg from './components/Main_pg';
 
