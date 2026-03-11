@@ -11,7 +11,7 @@ function Moreinfo(){
         console.log(data)
     },[data])
     let getdata=()=>{
-        navigate("/history/")
+        navigate("/history/",{state:data.STOCK_NAME})
     }
     let home=()=>{
         navigate("/home/")
