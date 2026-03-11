@@ -29,6 +29,7 @@ function History() {
 
   const location = useLocation();
   const stock = location.state;
+  console.log(stock)
 
   const [chartData, setChartData] = useState(null);
 
@@ -42,6 +43,7 @@ function History() {
         const res = await axios.get(
           "http://127.0.0.1:8000/stock/stock/data/" + stock + "/"
         );
+        console.log("Stock:", stock);
 
         const { dates, close } = res.data;
 
@@ -98,11 +100,8 @@ function History() {
 
   return (
     <div className="history-page">
-
       <div className="dashboard-container">
-
         <div className="chart-card">
-
           <h2 className="chart-title">
             {stock} PAST HISTORY
           </h2>
