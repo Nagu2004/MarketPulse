@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import axios from "axios"
 import "../style/chat.css"
 
-function Chatbot() {
+function Chatbot({ closeChat }) {
 
     const [data, setData] = useState([])
     const inputRef = useRef()
@@ -13,14 +13,14 @@ function Chatbot() {
 
         if (!userText) return
 
-        // 1️ Add user message
+        // Add user message
         const userMsg = { data: userText, sender: "user" }
-        setData(data => [...data, userMsg])
+        setData(prev => [...prev, userMsg])
 
         inputRef.current.value = ""
 
         try {
-            // 2️ Send POST request to Django
+            // Send POST request to Django
             const res = await axios.post(
                 "http://127.0.0.1:8000/bot/chatbot/",
                 { message: userText },
@@ -31,45 +31,53 @@ function Chatbot() {
                 }
             )
 
-            // 3️ Add bot response
+            // Add bot response
             const botMsg = { data: res.data.reply, sender: "robot" }
-            setData(data => [...data, botMsg])
+            setData(prev => [...prev, botMsg])
 
         } catch (err) {
             console.log(err)
         }
     }
 
-   return (
-    <div className="chat-container">
+    return (
+        <div className="chat-container">
 
-        <div className="chat-messages">
-            {data.map((e, index) => (
-                <div
-                    key={index}
-                    className={`message-row ${e.sender === "user" ? "user" : "robot"}`}
-                >
-                    <div className="message-bubble">
-                        {e.data}
+            {/* Header with close button */}
+            <div className="chat-header">
+                <span>Chatbot</span>
+                <button className="close-btn" onClick={closeChat}>✖</button>
+            </div>
+
+            {/* Chat messages */}
+            <div className="chat-messages">
+                {data.map((e, index) => (
+                    <div
+                        key={index}
+                        className={`message-row ${e.sender === "user" ? "user" : "robot"}`}
+                    >
+                        <div className="message-bubble">
+                            {e.data}
+                        </div>
                     </div>
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
 
-        <div className="chat-input-area">
-            <input
-                type="text"
-                ref={inputRef}
-                placeholder="Type message..."
-                onKeyDown={(e) => {
-                    if (e.key === "Enter") senddata()
-                }}
-            />
-            <button onClick={senddata}>Send</button>
-        </div>
+            {/* Input area */}
+            <div className="chat-input-area">
+                <input
+                    type="text"
+                    ref={inputRef}
+                    placeholder="Type message..."
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") senddata()
+                    }}
+                />
+                <button onClick={senddata}>Send</button>
+            </div>
 
-    </div>
-)
+        </div>
+    )
 }
 
 export default Chatbot
