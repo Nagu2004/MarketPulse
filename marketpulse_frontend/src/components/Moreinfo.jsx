@@ -1,37 +1,70 @@
-import { useEffect } from "react";
-//import "../css/info.css";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "../style/info.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Moreinfo(){
-    let navigate = useNavigate();
-    let location = useLocation();
-    let data  = location.state
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const data = location.state;
+
+    const [quote,setQuote] = useState("");
+
+    const quotes = [
+        "Buy when others are fearful.",
+        "The trend is your friend.",
+        "Cut losses quickly, let winners run.",
+        "Markets reward patience.",
+        "Price is truth.",
+        "Risk management is everything.",
+        "Trade the chart, not the news."
+    ];
+
     useEffect(()=>{
-        console.log(data)
-    },[data])
-    let getdata=()=>{
-        navigate("/history/",{state:data.STOCK_NAME})
+        console.log(data);
+
+        const interval = setInterval(()=>{
+            const random = Math.floor(Math.random()*quotes.length);
+            setQuote(quotes[random]);
+        },3000);
+
+        return ()=> clearInterval(interval);
+
+    },[data]);
+
+    const getdata = ()=>{
+        navigate("/history/",{state:data.STOCK_NAME});
     }
-    let home=()=>{
-        navigate("/home/")
+
+    const home = ()=>{
+        navigate("/home/");
     }
-    let back=()=>{
-        navigate("/fetch/")
+
+    const back = ()=>{
+        navigate("/fetch/");
     }
 
     return(
         <div className="info">
+
             <h1>STOCK INFORMATION</h1>
-            <p>STOCK_NAME <span>{data.STOCK_NAME}</span></p>
-            <p>PRICE<span>{data.PRICE}</span></p>
-            <p>DECISON<span>{data.DECISON}</span></p>
-            <div className="btn">
-            <button onClick={getdata} >PREVIOUS HISTORY</button>
-            <button onClick={back}>BACK</button>
-            <button onClick={home}>HOME</button>
+
+            <p>STOCK NAME <span>{data.STOCK_NAME}</span></p>
+            <p>PRICE <span>{data.PRICE}</span></p>
+            <p>DECISION <span>{data.DECISON}</span></p>
+
+            <div className="quote_box">
+                <p className="quote">"{quote}"</p>
             </div>
+
+            <div className="btn">
+                <button onClick={getdata}>PREVIOUS HISTORY</button>
+                <button onClick={back}>BACK</button>
+                <button onClick={home}>HOME</button>
+            </div>
+
         </div>
     );
 }
+
 export default Moreinfo;

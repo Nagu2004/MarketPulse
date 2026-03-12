@@ -1,5 +1,5 @@
 
-// import "../css/fetch.css";
+import "../style/fetch.css";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
