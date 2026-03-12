@@ -19,7 +19,7 @@
     justify-content:space-between;
     align-items:center;
     padding:10px;
-    background:#007bff;
+    background:#01174a;
     color:white;
     font-weight:bold;
 }
@@ -67,7 +67,7 @@
 
 /* User bubble */
 .user .message-bubble{
-    background: #007bff;
+    background: #01174a;
     color: white;
 }
 
@@ -96,7 +96,7 @@
 .chat-input-area button{
     padding: 10px 15px;
     border: none;
-    background: #007bff;
+    background: #01174a;
     color: white;
     cursor: pointer;
     font-weight: bold;
@@ -104,5 +104,5 @@
 
 /* Button hover */
 .chat-input-area button:hover{
-    background: #0056b3;
+    background: #01174a;
 }
