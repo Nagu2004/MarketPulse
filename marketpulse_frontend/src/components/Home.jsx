@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import "../style/home.css";
 function Home() {
   let nav=useNavigate();
   let movedata =()=>{
